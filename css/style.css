@@ -185,6 +185,10 @@ li.selected {
     flex-grow: 0;
 }
 
+#chat-bar span{
+    font-size: x-large;
+}
+
 #emojis {
     /* #5 #smileys #emojis menu */
     /* colors and borders */

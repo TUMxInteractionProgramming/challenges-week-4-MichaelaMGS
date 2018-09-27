@@ -1,6 +1,8 @@
 /* #6 start the #external #action and say hello */
 console.log("App is alive");
 
+
+
 //Public Variables
 var currentChannel;
 
@@ -9,6 +11,17 @@ var currentLocation = {
     latitude: 11.503306,
     what3words: 'shovels.drums.markets',
 }
+
+function Message (text) {
+     this.createdBy = currentLocation.what3words;
+     this.latitude = currentLocation.latitude;
+     this.longitude = currentLocation.longitude;
+     this.createdOn = Date.now();
+     this.expiresOn = new Date().setTime(new Date().getTime() + (15 * 60 * 1000));
+     this.text = text;
+     this.own = true;
+}
+
 
 
 /**
@@ -73,3 +86,70 @@ function toggleEmojis() {
     /* $('#emojis').show(); // #show */
     $('#emojis').toggle(); // #toggle
 }
+
+function sendMessage(){
+    var mes1 = new Message($('#inputText').val());
+    console.log(mes1);
+    createMessageElement(mes1);
+    
+    $('#inputText').val('');
+}
+
+function createMessageElement(messageObject){
+
+    var dateCreate = new Date(messageObject.createdOn);
+
+    var monthNames = [
+        "Jan", "Feb", "March",
+        "April", "May", "June", "July",
+        "Aug", "Sept", "Oct",
+        "Nov", "Dec"
+      ];
+
+      var weekDays = [
+        "Mon", "Tue", "Wed",
+        "Thu", "Fri", "Sat", "Sun"
+      ];
+    
+      var day = dateCreate.getDate();
+      var hour = dateCreate.getHours();
+      var cDateMin = dateCreate.getMinutes();
+      var monthIndex = dateCreate.getMonth();
+      var cDateWeekDay = dateCreate.getDay();
+
+    
+      var cDate = weekDays[cDateWeekDay] + ', ' + monthNames[monthIndex] + ' ' + day + ', ' + hour + ':' + cDateMin;
+    
+    var eDate = new Date(messageObject.expiresOn);
+    var minutes = eDate.getMinutes();
+    
+    var link ='<h3><a href="https://map.what3words.com/' + messageObject.createdBy 
+                + '" target="_blank"><strong>' + messageObject.createdBy + '</strong></a>' 
+                + cDate +'<em>' + minutes + 'min. left</em></h3>' +
+                ( "<p>" + messageObject.text + "</p>" ) + ( "<button> +5 min. <button/>")
+   
+    $('<div>').html(link).addClass('message').appendTo('#messages');
+
+
+}
+
+/* $( "<a/>", {
+        html: "<strong>:createdBy:</strong>",
+        "class": "new",
+        href: ":createdBy:",
+        target: "_blank",
+    });
+    $( "<p>:text:</p>" );
+   
+
+    <div class="message">
+            <h3><a href=":createdBy:" target="_blank"><strong>:createdBy:</strong></a>
+                :createdOn: <em>:expiresIn: min. left</em></h3>
+            <p>:text:</p>
+            <button>+5 min.</button>
+        </div>
+    
+    function addStation(){
+        var station = $('Input[id=station-input]').val();
+        $('<p>').html(station).appendTo('#stations');
+      }*/

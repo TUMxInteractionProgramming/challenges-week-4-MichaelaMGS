@@ -34,7 +34,7 @@
     </h1>
 
     <!-- CHANNELS -->
-    <ul>
+    <ul id="list-channels">
         <!-- #6 #channels #click calls our switchChannel with the corresponding name as an argument -->
         <li onclick="switchChannel(yummy)">
             #Yummy
@@ -165,6 +165,8 @@
             <button>+5 min.</button>
         </div>
 
+        
+
     </div>
 
     <!-- #5 #smileys #insert the chat-bar -->
@@ -178,6 +180,8 @@
             <i class="far fa-kiss-wink-heart"></i> 
             <i class="far fa-grin-stars"></i>
         </div>
+        <input type="text" id="inputText" placeholder="Message..." maxlength="140">
+        <button id="send-button" onclick="sendMessage();"><i class="fas fa-arrow-right"></i></button>
     </div>
 </div>
 

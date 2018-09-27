@@ -89,6 +89,9 @@ h1#left-app-bar img {
 h1 a {
     /* #6 #channels fix the #link color in app bar*/
     color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold; 
 }
 
 h1 #channel-star {
@@ -129,8 +132,9 @@ li .channel-meta {
     top: 12px;
 }
 
-li img {
+li span {
     vertical-align: middle;
+    font-size: 24px;
 }
 
 li.selected {
@@ -172,9 +176,10 @@ li.selected {
     border-bottom: 4px solid #3F51B5;
 }
 
-#tab-bar button img {
+#tab-bar button i {
     display: block;
     margin: 0 auto 4px auto;
+    font-size: 24px;
 }
 
 /* #5 CHAT BAR */
@@ -186,7 +191,7 @@ li.selected {
 }
 
 #chat-bar span{
-    font-size: x-large;
+    font-size: 24px;
 }
 
 #emojis {
@@ -206,7 +211,7 @@ li.selected {
 
     /* font and left-align text */
     text-align: left;
-    font-size: 28px;
+    font-size: 24px;
 
     /* scroll when it has too many emojis */
     overflow-y: auto;
